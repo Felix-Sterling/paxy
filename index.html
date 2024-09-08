@@ -37,20 +37,20 @@
 
 <div class="menu-container">
     <div class="menu">
-        <a href="#" class="menu-item" id="android-link">
+        <a href="tutorial.html" class="menu-item" id="teach">
             <img src="images/baby-carriage_green.png" alt="操作教程">
             <div>操作教程</div>
         </a>
-        <a href="#" class="menu-item" id="ios-link">
+        <a href="addressbook.html" class="menu-item" id="add-link">
             <img src="images/address-book_orange.png" alt="通讯录">
             <div>通讯录</div>
         </a>
-        <a href="#" class="menu-item" id="dialer-link">
+        <a href="homework.html" class="menu-item" id="dialer-link">
             <img src="images/phone-slash_grey.png" alt="拨号盘">
             <div>拨号盘</div>
         </a>
-        <a href="#" class="menu-item" id="about-link">
-            <img src="https://paxy.xiaoaitong.com" alt="关于">
+        <a href="https://paxy.xiaoaitong.com" class="menu-item" id="about-link">
+            <img src="images/circle-exclamation_red_dark.png" alt="登录">
             <div>登录</div>
         </a>
     </div>
@@ -171,17 +171,6 @@
             window.location.href = 'https://hanyu.baidu.com/s?wd=%E6%BB%9A&device=pc&from=home'; // 不用滚啊别来找线索傻逼找你妈存在感我他冯花钱买的你凭什么不给我随便加号码
         });
     }
-
-    // 处理入口按钮点击事件
-    document.getElementById('android-link').addEventListener('click', function(e) {
-        e.preventDefault();
-        handleDeviceDetection();
-    });
-
-    document.getElementById('ios-link').addEventListener('click', function(e) {
-        e.preventDefault();
-        handleDeviceDetection();
-    });
 
     // 获取当前页面的 URL 路径
     const currentPage = window.location.pathname;
