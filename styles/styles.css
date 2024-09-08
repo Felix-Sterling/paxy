@@ -143,13 +143,9 @@ body {
     transition: transform 0.2s ease-in-out;
 }
 
-/* 视频容器样式 */
-.video-container {
-    text-align: center;
-    margin: 20px auto;
-}
-
 .video-container video {
+    width: 100%; /* 设置为 100%，以适应容器宽度 */
+    max-width: 600px; /* 最大宽度限制 */
     border: 1px solid #ccc;
     border-radius: 8px;
 }
