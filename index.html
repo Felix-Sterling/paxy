@@ -32,34 +32,40 @@
     <div class="overlay-content">
         <p id="device-message">看看...</p>
         <button class="overlay-button" id="device-confirm-button">确定</button>
-        <!-- 添加一个不同意并退出按钮 -->
-        <button class="overlay-button deny" id="device-deny-button">不同意并退出</button>
     </div>
 </div>
 
 <div class="menu-container">
     <div class="menu">
-        <a href="tutorial.html" class="menu-item" id="teach">
+        <a href="tutorial.html" class="menu-item" id="teach" target="_blank">
             <img src="images/baby-carriage_green.png" alt="操作教程">
             <div>操作教程</div>
         </a>
-        <a href="https://paxy.xiaoaitong.com" class="menu-item" id="about-link">
-            <img src="images/circle-exclamation_red_dark.png" alt="登录">
+        <a href="https://paxy.xiaoaitong.com" class="menu-item" id="about-link" target="_blank">
+            <img src="images/user_red.png" alt="登录">
             <div>登录</div>
         </a>
-        <a href="addressbook.html" class="menu-item" id="add-link">
+        <a href="addressbook.html" class="menu-item" id="add-link" target="_blank">
             <img src="images/address-book_orange.png" alt="通讯录">
             <div>通讯录</div>
         </a>
-        <a href="homework.html" class="menu-item" id="dialer-link">
+        <a href="homework.html" class="menu-item" id="dialer-link" target="_blank">
             <img src="images/phone-slash_grey.png" alt="拨号盘">
             <div>拨号盘</div>
+        </a>
+        <a href="https://tools.liumngye.cn/music" class="menu-item" id="dialer-link" target="_blank">
+            <img src="images/book_red.png" alt="拨号盘">
+            <div>My Free MP3</div>
+        </a>
+        <a href="about.html" class="menu-item" id="dialer-link" target="_blank">
+            <img src="images/circle-exclamation_red_dark.png" alt="拨号盘">
+            <div>关于</div>
         </a>
     </div>
 </div>
 
 <div class="footer">
-    <a href="message.html" class="footer-item" id="message-link">
+    <a href="message.html" class="footer-item" id="message-link" >
         <img src="images/message_grey.png" alt="消息">
         <div>消息</div>
     </a>
@@ -127,7 +133,7 @@
 
         // 用户点击“不同意并退出”按钮
         privacyDenyButton.addEventListener('click', function() {
-            window.location.href = 'https://hanyu.baidu.com/s?wd=%E6%BB%9A&device=pc&from=home'; // 替换为你希望用户退出后访问的页面
+            window.open('https://hanyu.baidu.com/s?wd=%E6%BB%9A&device=pc&from=home', '_blank'); // 在新标签页中打开
         });
 
     } else if (!localStorage.getItem('device-detected')) {
@@ -176,7 +182,7 @@
 
         // 用户点击不同意并退出按钮
         deviceDenyButton.addEventListener('click', function() {
-            window.location.href = 'https://hanyu.baidu.com/s?wd=%E6%BB%9A&device=pc&from=home'; // 替换为你希望用户退出后访问的页面
+            window.open('https://hanyu.baidu.com/s?wd=%E6%BB%9A&device=pc&from=home', '_blank'); // 在新标签页中打开
         });
     }
 
