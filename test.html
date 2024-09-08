@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>大爱通</title>
+    <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+<!-- 你好,你发现了华点!这是这个网页运行的基础. -->
+<div class="header">大爱通</div>
+
+<!-- 隐私条款弹窗 --> 
+<div class="overlay" id="privacy-overlay">
+    <div class="overlay-content">
+        <p>请阅读并同意我们的使用条款和隐私政策。</p>
+        <p> 1.安卓妹禁止进入本网站,因为拉低本服务器GDP</p>
+        <p> 2.苹果妹禁止使用,因为我没有</p>
+        <p> 3.电脑妹禁止点击,因为我贱</p>
+        <p> 4.在点击安卓妹/苹果妹入口后,我们默认你得到了班主任许可并出于方便的目的使用此服务</p>
+        <p> 5.人格启动</p>
+        <p> 6.你可以发送反馈到我的邮箱laband@foxmail.com来反馈问题,你也可以直接添加我的QQ账号</p>
+        <p> 7.本网站仅做研究添加号码原理使用,禁止用于商业用途.如果你是付费获得的此页面,请立即退款并差评</p> <!-- 我铊冯花钱买的校牌凭什么不给我加号码,我澡称冯的个福 --> 
+        <p> 8.传播本服务即代表你愿意承担一切传播带来的后果</p>
+        <button class="overlay-button" id="privacy-agree-button" disabled>同意并继续 (10s)</button>
+        <button class="overlay-button deny" id="privacy-deny-button">不同意并退出</button>
+    </div>
+</div>
+
+<!-- 设备类型确认弹窗 -->
+<div class="overlay" id="device-overlay">
+    <div class="overlay-content">
+        <p id="device-message">看看...</p>
+        <button class="overlay-button" id="device-confirm-button">确定</button>
+    </div>
+</div>
+
+<div class="menu-container">
+    <div class="menu">
+        <a href="#" class="menu-item" id="android-link">
+            <img src="images/baby-carriage_green.png" alt="操作教程">
+            <div>操作教程</div>
+        </a>
+        <a href="#" class="menu-item" id="ios-link">
+            <img src="images/address-book_orange.png" alt="通讯录">
+            <div>通讯录</div>
+        </a>
+        <a href="#" class="menu-item" id="dialer-link">
+            <img src="images/phone-slash_grey.png" alt="拨号盘">
+            <div>拨号盘</div>
+        </a>
+        <a href="#" class="menu-item" id="about-link">
+            <img src="https://paxy.xiaoaitong.com" alt="关于">
+            <div>登录</div>
+        </a>
+    </div>
+</div>
+
+<div class="footer">
+    <a href="message.html" class="footer-item" id="message-link">
+        <img src="images/message_grey.png" alt="消息">
+        <div>消息</div>
+    </a>
+    <a href="index.html" class="footer-item" id="test-link">
+        <img src="images/atom_red.png" alt="家校">
+        <div>家校</div>
+    </a>
+    <a href="location.html" class="footer-item" id="location-link">
+        <img src="images/map-location-dot_grey.png" alt="定位">
+        <div>定位</div>
+    </a>
+    <a href="profile.html" class="footer-item" id="profile-link">
+        <img src="images/user_grey.png" alt="我的">
+        <div>我的</div>
+    </a>
+</div>
+
+<!-- 音频文件 -->
+<audio id="android-sound" src="sounds/android.mp3"></audio>
+<audio id="ios-sound" src="sounds/ios.mp3"></audio>
+<audio id="other-sound" src="sounds/other.mp3"></audio>
+
+<script>
+    // 获取元素
+    const privacyOverlay = document.getElementById('privacy-overlay');
+    const privacyAgreeButton = document.getElementById('privacy-agree-button');
+    const privacyDenyButton = document.getElementById('privacy-deny-button');
+    const deviceOverlay = document.getElementById('device-overlay');
+    const deviceMessage = document.getElementById('device-message');
+    const deviceConfirmButton = document.getElementById('device-confirm-button');
+    const deviceDenyButton = document.getElementById('device-deny-button');
+    const body = document.body;
+    let countdownTimer;
+
+    // 显示隐私条款弹窗
+    privacyOverlay.style.display = 'flex';
+
+    // 隐私条款弹窗计时器
+    let countdown = 10;
+    privacyAgreeButton.disabled = true; // 禁用“同意并继续”按钮
+    privacyAgreeButton.style.backgroundColor = '#ccc'; // 改为灰色
+    privacyAgreeButton.style.opacity = 0.6; // 透明度
+    privacyAgreeButton.textContent = `同意并继续 (${countdown}s)`; // 初始文本
+
+    // 启动计时器
+    countdownTimer = setInterval(() => {
+        countdown--;
+        privacyAgreeButton.textContent = `同意并继续 (${countdown}s)`;
+        if (countdown <= 0) {
+            clearInterval(countdownTimer);
+            privacyAgreeButton.disabled = false; // 启用“同意并继续”按钮
+            privacyAgreeButton.style.backgroundColor = '#00c8b0'; // 恢复颜色
+            privacyAgreeButton.style.opacity = 1; // 恢复透明度
+            privacyAgreeButton.textContent = `同意并继续`; // 恢复文本
+        }
+    }, 1000);
+
+    // 用户点击“同意并继续”按钮
+    privacyAgreeButton.addEventListener('click', function() {
+        privacyOverlay.style.display = 'none'; // 隐藏隐私条款弹窗
+        // 显示设备检测弹窗
+        handleDeviceDetection();
+    });
+
+    // 用户点击“不同意并退出”按钮
+    privacyDenyButton.addEventListener('click', function() {
+        window.location.href = 'https://hanyu.baidu.com/s?wd=%E6%BB%9A&device=pc&from=home'; // 替换为你希望用户退出后访问的页面
+    });
+
+    // 处理设备检测
+    function handleDeviceDetection() {
+        let deviceType = '未知设备';
+        const androidSound = document.getElementById('android-sound');
+        const iosSound = document.getElementById('ios-sound');
+        const otherSound = document.getElementById('other-sound');
+
+        if (navigator.userAgent.match(/Android/i)) {
+            deviceType = '安卓机';
+            androidSound.play(); // 播放安卓设备音频
+            deviceMessage.innerHTML = `
+                <p>检测到设备类型为: ${deviceType}.卡死我了.安卓妹禁止进入哈.不过这次就放你进去了</p>
+                <p>请注意，我们的服务专为安卓设备优化。</p>
+            `;
+        } else if (navigator.userAgent.match(/iPhone|iPad|iPod/i)) {
+            deviceType = '苹果机';
+            iosSound.play(); // 播放苹果设备音频
+            deviceMessage.innerHTML = `
+                <p>检测到设备类型为: ${deviceType}.哇塞,安卓小弟拜见苹果女王</p>
+                <p>请注意，我们的服务专为苹果设备优化。</p>
+            `;
+        } else {
+            deviceType = '你这是什么东西';
+            otherSound.play(); // 播放其他设备音频
+            deviceMessage.innerHTML = `
+                <p>检测到.... ${deviceType}.</p>
+                <p>某些功能可能不适用于此设备。</p>
+            `;
+        }
+
+        // 显示设备检测弹窗
+        deviceOverlay.style.display = 'flex';
+
+        // 用户点击确定按钮
+        deviceConfirmButton.addEventListener('click', function() {
+            deviceOverlay.style.display = 'none'; // 隐藏设备检测弹窗
+            localStorage.setItem('agreed', 'true');
+        });
+
+        // 用户点击不同意并退出按钮
+        deviceDenyButton.addEventListener('click', function() {
+            window.location.href = 'https://hanyu.baidu.com/s?wd=%E6%BB%9A&device=pc&from=home'; // 不用滚啊别来找线索傻逼找你妈存在感我他冯花钱买的你凭什么不给我随便加号码
+        });
+    }
+
+    // 处理入口按钮点击事件
+    document.getElementById('android-link').addEventListener('click', function(e) {
+        e.preventDefault();
+        handleDeviceDetection();
+    });
+
+    document.getElementById('ios-link').addEventListener('click', function(e) {
+        e.preventDefault();
+        handleDeviceDetection();
+    });
+
+    // 获取当前页面的 URL 路径
+    const currentPage = window.location.pathname;
+
+    // 获取所有的 footer-item 链接
+    const footerLinks = document.querySelectorAll('.footer-item');
+
+    // 遍历所有 footer-item 链接
+    footerLinks.forEach(link => {
+        // 获取链接的 href 属性
+        const href = link.getAttribute('href');
+
+        // 如果 href 与当前页面路径相同，则禁用链接
+        if (currentPage.endsWith(href)) {
+            link.classList.add('disabled');
+            link.addEventListener('click', (e) => {
+                e.preventDefault(); // 禁用默认行为
+            });
+        }
+    });
+</script>
+
+</body>
+</html>
