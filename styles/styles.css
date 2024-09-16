@@ -257,3 +257,35 @@ button:active {
     cursor: not-allowed;
     opacity: 0.6;
 }
+
+/* 文本框标题样式 */
+.context-title {
+    font-family: Arial, sans-serif;  /* 正常字体 */
+    font-size: 20px;                 /* 字体大小 */
+    padding: 10px;                   /* 内边距 */
+    border-radius: 12px 12px 0 0;   /* 圆角边框（顶部） */
+    margin-bottom: 10px;             /* 下边距 */
+    background-color: #f4f4f4;       /* 浅灰色背景 */
+    color: #333;                     /* 字体颜色 */
+}
+
+/* 文本框样式 */
+.context {
+    background-color: #000;          /* 黑色背景 */
+    color: #0f0;                     /* 绿色字体 */
+    font-family: 'Courier New', Courier, monospace; /* 代码字体 */
+    padding: 20px;                   /* 增加内边距 */
+    margin: 20px;                    /* 增加外边距 */
+    border-radius: 12px;             /* 圆角边框 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 添加阴影效果 */
+    transition: background 0.3s ease, box-shadow 0.3s ease; /* 过渡效果 */
+    width: calc(100% - 40px);        /* 调整宽度，考虑边距 */
+    box-sizing: border-box;          /* 包含边框和内边距在宽度中 */
+    font-size: 18px;                 /* 字体大小 */
+}
+
+.context:hover {
+    background: #222;                /* 悬停时背景颜色变化 */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* 悬停时阴影效果变化 */
+}
+
