@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>电话本alpha版</title>
+    <title>电话本</title>
     <link rel="stylesheet" href="styles/styles.css">
 </head>
 <body>
 
-<div class="header">电话本(Not identified)</div>
+<div class="header">电话本</div>
 
 <div class="form-container">
     <form id="input-form">
@@ -19,63 +19,6 @@
     <div id="result"></div>
 </div>
 
-<script>
-    // 获取表单和结果显示区域
-    const form = document.getElementById('input-form');
-    const resultDiv = document.getElementById('result');
-
-    // 表单提交事件处理
-    form.addEventListener('submit', function(event) {
-        event.preventDefault(); // 防止表单默认提交
-
-        // 获取输入值
-        const userInput = document.getElementById('user-input').value;
-
-        // 查找五位连续数字
-        const match = userInput.match(/\b\d{5}\b/);
-
-        if (match) {
-            const studentID = match[0];
-            const newUrl = `https://paxy.xiaoaitong.com/mb-device:phone_book/student_id-${studentID}`; // 创建新链接
-
-            // 显示提示信息和复制按钮
-            resultDiv.innerHTML = `
-                检测到studentID：${studentID}<br>
-                即将跳转到电话本...
-                <br><br>
-                剩余时间：<span id="countdown">5</span> 秒
-                <br><br>
-                <button id="copy-button">复制studentID,以便下次使用</button>
-            `;
-
-            let countdown = 5; // 倒计时时间（秒）
-            const countdownElement = document.getElementById('countdown');
-            const copyButton = document.getElementById('copy-button');
-
-            // 每秒更新倒计时
-            const interval = setInterval(function() {
-                countdown--;
-                countdownElement.textContent = countdown;
-                if (countdown <= 0) {
-                    clearInterval(interval);
-                    window.location.href = newUrl; // 倒计时结束后跳转
-                }
-            }, 1000); // 每秒更新一次
-
-            // 复制按钮点击事件
-            copyButton.addEventListener('click', function() {
-                navigator.clipboard.writeText(studentID).then(function() {
-                    alert('studentID已复制到剪贴板！');
-                }, function() {
-                    alert('复制失败，请手动复制。');
-                });
-            });
-        } else {
-            resultDiv.textContent = '未检测到studentID';
-        }
-    });
-</script>
-
 <div class="footer">
     <a href="index.html" class="footer-item" id="message-link">
         <img src="images/arrow-rotate-left_red.png" alt="返回">
@@ -83,27 +26,8 @@
     </a>
 </div>
 
-<script>
-    // 获取当前页面的 URL 路径
-    const currentPage = window.location.pathname;
-
-    // 获取所有的 footer-item 链接
-    const footerLinks = document.querySelectorAll('.footer-item');
-
-    // 遍历所有 footer-item 链接
-    footerLinks.forEach(link => {
-        // 获取链接的 href 属性
-        const href = link.getAttribute('href');
-
-        // 如果 href 与当前页面路径相同，则禁用链接
-        if (currentPage.endsWith(href)) {
-            link.classList.add('disabled');
-            link.addEventListener('click', (e) => {
-                e.preventDefault(); // 禁用默认行为
-            });
-        }
-    });
-</script>
+<script src="scripts/addressbook.js"></script>
+<script src="scripts/measure.js"></script>
 
 </body>
 </html>
