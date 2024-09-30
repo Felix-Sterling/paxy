@@ -1,0 +1,47 @@
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -.75rem;
+    margin-left: -.75rem;
+}
+*, ::after, ::before {
+    box-sizing: border-box;
+}
+用户代理样式表
+div {
+    display: block;
+    unicode-bidi: isolate;
+}
+@media (min-width: 860px) {
+    .text-md-center {
+        text-align: center !important;
+    }
+}
+html:not([dir=rtl]) body {
+    text-align: left;
+}
+body {
+    margin: 0;
+    font-family: "Segoe UI", SegoeUI, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #000;
+    background-color: #fff;
+}
+:root {
+    --progress-indicator-spacing: 14.25rem;
+    --default-play-button-spacing: $carousel-control-min-size * 2.5;
+}
+html {
+    font-family: sans-serif;
+    line-height: 1.15;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+}
+*, ::after, ::before {
+    box-sizing: border-box;
+}
+*, ::after, ::before {
+    box-sizing: border-box;
+}
