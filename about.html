@@ -3,20 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>测试</title>
+    <title>大爱通</title>
     <link rel="stylesheet" href="styles/styles.css">
 </head>
 <body>
-<div class="header">测试</div>
+<!-- 你好,你发现了华点!这是这个网页运行的基础. -->
+<div class="header">大爱通</div>
 
-<div class="overlay" id="forbid-overlay" style="display: none;">
+<!-- 隐私条款弹窗 --> 
+<div class="overlay" id="privacy-overlay" style="display: none;">
     <div class="overlay-content">
-        <p>开发中。</p>
-        <button class="overlay-button deny" id="forbid-deny-button">返回</button>
+        <p>请阅读我们的 <a href="about/orders.html">使用条款</a> 和 <a href="about/privacy.html">隐私政策</a> 。</p>
+        <p>使用此服务即代表你已获得班主任许可。</p>
+        <p>点击“同意并继续”即代表你已阅读并同意我们的使用条款与隐私政策。</p>
+        <p>本网页由 <a href="https://github.com">@Github Pages</a> 以及 <a href="https://netlify.com">@Netlify Sites</a> 运营。</a></p>
+        <p>本网页仅做研究添加号码原理使用,禁止用于商业用途。</p> <!-- 我铊冯花钱买的校牌凭什么不给我加号码,我澡称冯的个福 --> 
+        <button class="overlay-button" id="privacy-agree-button" disabled>同意并继续 (10s)</button>
+        <button class="overlay-button deny" id="privacy-deny-button">不同意并退出</button>
     </div>
 </div>
 
-<script src="scripts/forbid.js"></script>
+<!-- 设备类型确认弹窗 -->
+<div class="overlay" id="device-overlay" style="display: none;">
+    <div class="overlay-content">
+        <p id="device-message">看看...</p>
+        <button class="overlay-button" id="device-confirm-button">确定</button>
+    </div>
+</div>
+
+<div class="menu-container">
+    <div class="menu">
+        <a href="about/privacy.html" class="menu-item" id="privacy" target="_blank">
+            <img src="images/circle-exclamation_red_dark.png" alt="隐私政策">
+            <div>隐私政策</div>
+        </a>
+        <a href="about/orders.html" class="menu-item" id="orders" target="_blank">
+            <img src="images/circle-exclamation_red_dark.png" alt="使用条款">
+            <div>使用条款</div>
+        </a>
+    </div>
+</div>
+
+<div class="footer">
+    <a href="message.html" class="footer-item" id="message-link" >
+        <img src="images/message_grey.png" alt="消息">
+        <div>消息</div>
+    </a>
+    <a href="index.html" class="footer-item" id="test-link">
+        <img src="images/atom_grey.png" alt="家校">
+        <div>家校</div>
+    </a>
+    <a href="location.html" class="footer-item" id="location-link">
+        <img src="images/map-location-dot_green.png" alt="定位">
+        <div>定位</div>
+    </a>
+    <a href="account.html" class="footer-item" id="profile-link">
+        <img src="images/user_grey.png" alt="我的">
+        <div>我的</div>
+    </a>
+</div>
+
+
+<script src="scripts/index.js"></script>
 <script src="scripts/measure.js"></script>
 
 </body>
