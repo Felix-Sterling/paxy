@@ -42,7 +42,7 @@
 
         // 用户点击“不同意并退出”按钮
         privacyDenyButton.addEventListener('click', function() {
-            window.open('https://hanyu.baidu.com/s?wd=%E6%BB%9A&device=pc&from=home', '_blank'); // 在新标签页中打开
+            window.open('https://google.com'); // 在新标签页中打开
         });
 
     } else if (!localStorage.getItem('device-detected')) {
@@ -93,4 +93,35 @@
         deviceDenyButton.addEventListener('click', function() {
             window.open('https://hanyu.baidu.com/s?wd=%E6%BB%9A&device=pc&from=home', '_blank'); // 在新标签页中打开
         });
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('DOM fully loaded and parsed');
+            const typingElement = document.querySelector('.typing-wrapper');
+            
+            if (!typingElement) {
+                console.error('Element with class .typing-wrapper not found');
+                return;
+            }
+        
+            console.log('Element found:', typingElement);
+            const text = typingElement.textContent;
+            typingElement.textContent = ''; // 清空文本内容
+            let index = 0;
+        
+            // 添加光标闪烁效果
+            typingElement.classList.add('cursor-blink');
+        
+            function type() {
+                if (index < text.length) {
+                    typingElement.textContent += text.charAt(index);
+                    index++;
+                    setTimeout(type, 100); // 每100ms打下一个字符
+                }
+            }
+        
+            type(); // 启动打字效果
+        });
+        
+        
     }
+    

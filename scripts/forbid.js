@@ -4,9 +4,9 @@
     const forbidDenyButton = document.getElementById('forbid-deny-button');
     let countdownTimer;
 
-    // 检查用户隐私条款同意状态
+    // 拒绝
     if (!localStorage.getItem('fotbid-agreed')) {
-        // 显示隐私条款弹窗
+        // 显示拒绝弹窗
         forbidOverlay.style.display = 'flex';
 
         // 用户点击“退出”按钮
