@@ -168,27 +168,40 @@
     </div>
 
     <script>
-        // 绑定点击事件到放大镜图标
-        document.getElementById('searchIcon').addEventListener('click', function () {
-            const searchInput = document.getElementById('searchInput').value.trim().toLowerCase();
+    // 绑定点击事件到放大镜图标
+    document.getElementById('searchIcon').addEventListener('click', function () {
+        handleSearch();
+    });
 
-            // 判断输入内容是否为特定值
-            if (searchInput === '到底让你们搜什么进来嘞') {
-                // 跳转到特定页面
-                window.location.href = 'home.html';
-            } else if (searchInput) {
-                // 跳转到搜索结果页面，并传递查询参数
-                window.location.href = 'search.html?q=' + encodeURIComponent(searchInput);
-            } else {
-                alert('请输入搜索内容');
-            }
-        });
-
-        // 点击“I'm Feeling Lucky”按钮触发
-        function handleFeelingLucky() {
-            // 示例：跳转到固定页面
-            window.location.href = 'lucky_page.html';
+    // 监听搜索框中的回车事件
+    document.getElementById('searchInput').addEventListener('keydown', function (event) {
+        if (event.key === 'Enter') {
+            handleSearch();
         }
-    </script>
+    });
+
+    // 通用搜索处理函数
+    function handleSearch() {
+        const searchInput = document.getElementById('searchInput').value.trim().toLowerCase();
+
+        // 判断输入内容是否为特定值
+        if (searchInput === '到底让你们搜什么进来嘞') {
+            // 跳转到特定页面
+            window.location.href = 'home.html';
+        } else if (searchInput) {
+            // 跳转到搜索结果页面，并传递查询参数
+            window.location.href = 'search.html?q=' + encodeURIComponent(searchInput);
+        } else {
+            alert('请输入搜索内容');
+        }
+    }
+
+    // 点击“I'm Feeling Lucky”按钮触发
+    function handleFeelingLucky() {
+        // 示例：跳转到固定页面
+        window.location.href = 'lucky_page.html';
+    }
+</script>
+
 </body>
 </html>
